@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage - Parkyspot</title>
+  <link rel="shortcut icon" href="/Images/Icon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="/Images/Icon.png" alt="Parkyspot Logo" class="h-8 mr-2"> <!-- Add your logo here -->
+        <h1 class="text-xl font-semibold text-gray-800">Parkyspot</h1>
+      </div>
+      <nav class="space-x-6 text-gray-700 font-medium">
+        <a href="/Parkyspot/Homepage.html" class="hover:text-blue-500">Home</a>
+        <a href="/Parkyspot/slotBooking.html" class="hover:text-blue-500">Book Parking</a>
+        <a href="/Parkyspot/reservationPGE.HTML" class="hover:text-blue-500">Reservation</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-cover bg-center h-96 flex items-center" style="background-image: url('/Images/parking zone.jpg');">
+    <div class="container mx-auto text-center text-white px-6">
+      <h2 class="text-4xl font-bold leading-tight">Find Parking Made Easy</h2>
+      <p class="text-lg mt-4">Locate and book your parking spot in seconds with real-time availability.</p>
+      <div class="mt-6 flex justify-center">
+        <input id="location-input" type="text" placeholder="Enter your location"
+          class="px-4 py-2 text-black w-64 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button id="find-parking-btn" class="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600">
+          Find Parking Now
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Nearby Parking Spots -->
+  <section class="container mx-auto mt-10 px-4">
+    <h3 class="text-3xl font-bold text-gray-800 mb-6">Nearby Parking Spots</h3>
+    <!-- List of Nearby Parking Areas -->
+    <div id="parking-results" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Dynamic content will be injected here -->
+    </div>
+
+
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="bg-gray-200 py-12 mt-12">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold text-gray-800 mb-8">How It Works</h3>
+      <div class="flex justify-center space-x-10">
+        <!-- Step 1 -->
+        <div class="w-1/3 text-center">
+          <div class="text-blue-500 text-5xl font-semibold">
+            <img src="/Images/parking map.avif" class="h-40 mx-auto mb-4" alt="">
+          </div>
+          <h4 class="text-lg font-semibold mt-2">Find a Spot</h4>
+          <p class="text-gray-600">Search for available spots near your location.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="w-1/3 text-center">
+          <div class="text-blue-500 text-5xl font-semibold">
+            <img src="/Images/Wavy_Bus-42_Single-05.jpg" class="h-40 mx-auto mb-4" alt="">
+          </div>
+          <h4 class="text-lg font-semibold mt-2">Book a Slot</h4>
+          <p class="text-gray-600">Select a time and confirm your slot.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="w-1/3 text-center">
+          <div class="text-blue-500 text-5xl font-semibold">
+            <img src="/Images/park car.jpg" class="h-40 mx-auto mb-4" alt="">
+          </div>
+          <h4 class="text-lg font-semibold mt-2">Park and Go</h4>
+          <p class="text-gray-600">Check-in with your QR code and park easily.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="container mx-auto py-12">
+    <h3 class="text-3xl font-bold text-gray-800 text-center mb-8">Features</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="text-center">
+        <img src="/Images/real-time.jpeg" alt="Feature Icon 1" class="h-40 mx-auto mb-4">
+        <!-- Placeholder for feature icon -->
+        <h4 class="font-semibold text-xl">Real-Time Availability</h4>
+        <p class="text-gray-600">Check live availability of parking slots.</p>
+      </div>
+      <div class="text-center">
+        <img src="/Images/QR Code.webp" alt="Feature Icon 2" class="h-40 mx-auto mb-4">
+        <h4 class="font-semibold text-xl">QR Code Access</h4>
+        <p class="text-gray-600">Use a QR code for quick check-in.</p>
+      </div>
+      <div class="text-center">
+        <img src="/Images/Wavy_Bus-42_Single-05.jpg" alt="Feature Icon 3" class="h-40 mx-auto mb-4">
+        <h4 class="font-semibold text-xl">Flexible Booking</h4>
+        <p class="text-gray-600">Book by hour or for extended periods.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="bg-blue-500 text-white py-12 text-center">
+    <h3 class="text-3xl font-bold">Ready to Park?</h3>
+    <p class="mt-4">Find a parking spot near you and book with ease!</p>
+    <button class="bg-white text-blue-500 px-6 py-3 mt-6 rounded-md font-semibold hover:bg-gray-100">Find Parking Near
+      Me</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 py-8">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Parkyspot. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    fetch("parking_data.json")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("find-parking-btn").addEventListener("click", () => {
+          const regionInput = document.getElementById("location-input").value.trim().toLowerCase();
+          const resultsContainer = document.getElementById("parking-results");
+
+          // Clear previous results
+          resultsContainer.innerHTML = "";
+
+          if (regionInput) {
+            if (data[regionInput]) {
+              // Fetch parking locations for the entered region
+              const locations = data[regionInput];
+
+              // Dynamically create parking cards
+              locations.forEach(location => {
+                const parkingCard = `
+    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+      <img src="/Images/park car.jpg" alt="${location.name}" class="h-40 w-full object-cover">
+      <div class="p-4">
+        <h4 class="text-lg font-semibold text-gray-800 truncate">${location.name}</h4>
+        <div class="flex items-center text-sm text-gray-600 mt-2">
+          <span class="flex items-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.686 2 6 4.686 6 8c0 4.418 6 12 6 12s6-7.582 6-12c0-3.314-2.686-6-6-6z" />
+  <circle cx="12" cy="8" r="2" fill="currentColor" />
+</svg>
+
+            ${location.distance}
+          </span>
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M16 3H7a1 1 0 0 0 0 2h7a1 1 0 1 1 0 2H7a1 1 0 0 0 0 2h5.586l-5.293 5.293A1 1 0 0 0 8 18h8a1 1 0 1 0 0-2h-6.586l4-4H16a1 1 0 1 0 0-2h-3.414l1.707-1.707A1 1 0 0 0 16 6h-5a1 1 0 0 0 0-2h5a1 1 0 1 1 0 2z"/>
+</svg>
+            ${location.price}/hr
+          </span>
+        </div>
+        <button class="bg-blue-500 text-white mt-4 w-full py-2 rounded-md hover:bg-blue-600" onclick="redirectToSlotBooking('${location.name}', '${location.distance}', '${location.price}')">Book Now</button>
+      </div>
+    </div>
+  `;
+                resultsContainer.innerHTML += parkingCard;
+              });
+
+            } else {
+              // No parking found for the entered region
+              resultsContainer.innerHTML = "<p class='text-gray-600'>No parking spots found for this region.</p>";
+            }
+          } else {
+            resultsContainer.innerHTML = "<p class='text-gray-600'>Please enter a region to search.</p>";
+          }
+        });
+      })
+      .catch(error => console.error("Error loading parking data:", error));
+
+    // Redirect to Slot Booking Page
+    function redirectToSlotBooking(name, distance, price) {
+      const url = `/Parkyspot/slotBooking.html?name=${encodeURIComponent(name)}&distance=${encodeURIComponent(distance)}&price=${encodeURIComponent(price)}`;
+      window.location.href = url;
+    }
+
+
+  </script>
+
+</body>
+
+</html>

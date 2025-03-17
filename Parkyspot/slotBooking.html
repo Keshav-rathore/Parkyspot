@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkyspot - Book a Slot</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- Header Section -->
+  <header>
+    <nav class="bg-white shadow-md p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <img src="/Images/Icon.png" alt="" class="h-12">
+          <a href="index.html" class="text-2xl font-bold text-blue-500">Parkyspot</a>
+        </div>
+        <div>
+          <a href="/Parkyspot/Homepage.html" class="text-gray-700 hover:text-blue-500">Home</a>
+          <a href="/Parkyspot/" class="text-gray-700 hover:text-blue-500">Booking</a>
+          <a href="/Parkyspot/reservationPGE.HTML" class="ml-4 text-gray-700 hover:text-blue-500">Reservations</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Parking Location Details -->
+  <section class="container mx-auto p-6 bg-white rounded-lg shadow-md mt-6">
+    <h2 class="text-2xl font-semibold text-blue-500">Parking Location Details</h2>
+    <div id="parking-details" class="mt-4">
+      <!-- Parking details will be inserted here -->
+    </div>
+  </section>
+
+  <h2 class="mx-4 mt-4 mb-4 text-2xl font-semibold text-blue-500"> Select your Slots</h2>
+
+  <section class="p-6 bg-white flex items-center justify-center">
+    <div class="space-y-4">
+      <div class="grid grid-cols-6 gap-4">
+        <!-- Available Slot -->
+        <div
+          class="p-4 bg-green-100 text-green-800 font-semibold text-center rounded-lg cursor-pointer hover:bg-green-200"
+          data-slot="Slot 1">
+          Slot 1
+        </div>
+        <div class="p-4 bg-yellow-100 text-yellow-800 font-semibold text-center rounded-lg">
+          Slot 2 (Reserved)
+        </div>
+        <div class="p-4 bg-red-100 text-red-800 font-semibold text-center rounded-lg">
+          Slot 3 (Filled)
+        </div>
+        <div
+          class="p-4 bg-green-100 text-green-800 font-semibold text-center rounded-lg cursor-pointer hover:bg-green-200"
+          data-slot="Slot 4">
+          Slot 4
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section class="container mx-auto p-6 mt-6 bg-white rounded-lg shadow-md">
+    <h3 class="text-xl font-semibold text-gray-700 mb-4">Book Your Slot</h3>
+    <form id="booking-form" class="space-y-4">
+      <div>
+        <label for="slot" class="block text-blue-600 font-medium">Select Slot:</label>
+        <select id="slot" name="slot"
+          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="none">Select slot</option>
+          <option value="1">Slot 1</option>
+          <option value="4">Slot 4</option>
+
+        </select>
+      </div>
+
+      <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Select a Time Slot:</h2>
+        <div class="grid grid-cols-6 gap-6 time-slot-container">
+          <!-- Time slots will be dynamically injected here -->
+        </div>
+      </div>
+      ''
+      <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600">
+        Confirm Booking
+      </button>
+
+    </form>
+  </section>
+
+  <footer class="bg-white p-4 text-center text-gray-600 mt-12">
+    <p>&copy; 2024 Parkyspot. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  let selectedSlot = null;
+  let selectedTimeSlot = null;
+
+  // Get query parameters (for location details)
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      name: params.get('name'),
+      distance: params.get('distance'),
+      price: params.get('price')
+    };
+  }
+
+  const params = getQueryParams();
+
+  if (params.name && params.distance && params.price) {
+    const parkingDetailsContainer = document.getElementById('parking-details');
+    const parkingDetailsHTML = `
+      <div class="p-4 bg-gray-100 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold text-blue-800">Location: ${params.name}</h3>
+        <p class="text-blue-600">Distance: ${params.distance}</p>
+        <p class="text-blue-600">Cost: ${params.price} per hour</p>
+      </div>
+    `;
+    parkingDetailsContainer.innerHTML = parkingDetailsHTML;
+  } else {
+    console.error('Missing required query parameters');
+    const parkingDetailsContainer = document.getElementById('parking-details');
+    parkingDetailsContainer.innerHTML = '<p class="text-red-500">Error: Missing location details in the URL.</p>';
+  }
+
+  // Generate time slots dynamically
+  function generateTimeSlots(startHour, endHour, intervalHours) {
+    const timeSlots = [];
+    let currentHour = startHour;
+    while (currentHour < endHour) {
+      const nextHour = currentHour + intervalHours;
+      const start = formatTime(currentHour);
+      const end = formatTime(nextHour);
+      timeSlots.push(`${start} - ${end}`);
+      currentHour = nextHour;
+    }
+    return timeSlots;
+  }
+
+  // Format time for display (AM/PM)
+  function formatTime(hour) {
+    const period = hour < 12 || hour === 24 ? 'AM' : 'PM';
+    const formattedHour = hour % 12 === 0 ? 12 : hour % 12;
+    return `${formattedHour}:00 ${period}`;
+  }
+
+  // Render the time slots on the page
+  function renderTimeSlots() {
+    const timeSlotContainer = document.querySelector('.time-slot-container');
+    const slots = generateTimeSlots(0, 24, 4); // Generate time slots from 12 AM to 12 PM
+
+    const slotHTML = slots.map(slot => `
+      <button 
+        class="time-slot bg-white text-blue-600 font-medium p-3 rounded-lg border border-gray-300 hover:shadow-md transition duration-300" 
+        data-time="${slot}">
+        ${slot}
+      </button>
+    `).join('');
+
+    timeSlotContainer.innerHTML = slotHTML;
+
+    // Attach event listeners to each time slot button
+    const timeSlotButtons = document.querySelectorAll('.time-slot');
+    timeSlotButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        // Prevent default button behavior (no page redirect or form submission)
+        event.preventDefault();
+
+        // Reset all buttons to unselected state
+        timeSlotButtons.forEach(btn => {
+          btn.classList.remove('bg-blue-500', 'text-white');
+          btn.classList.add('bg-white', 'text-blue-600');
+        });
+
+        // Set the clicked button to the selected state
+        event.target.classList.add('bg-blue-500', 'text-white');
+        event.target.classList.remove('bg-white', 'text-blue-600');
+        selectedTimeSlot = event.target.dataset.time;
+
+        console.log(`Selected Time Slot: ${selectedTimeSlot}`);
+      });
+    });
+  }
+
+  // Render time slots on page load
+  renderTimeSlots();
+
+  // Handle form submission
+  document.getElementById('booking-form').addEventListener('submit', (event) => {
+    event.preventDefault();  // Prevent form from submitting the traditional way
+
+    selectedSlot = document.getElementById('slot').value;
+    if (!selectedSlot || !selectedTimeSlot) {
+      alert('Please select both a parking slot and a time slot.');
+      return;
+    }
+
+    // Construct the URL for the confirmation page
+    const confirmationURL = `/Parkyspot/ConfirmationPage.html?name=${encodeURIComponent(params.name)}&distance=${encodeURIComponent(params.distance)}&price=${encodeURIComponent(params.price)}&slot=${encodeURIComponent(selectedSlot)}&time=${encodeURIComponent(selectedTimeSlot)}`;
+
+    // Redirect to the confirmation page
+    window.location.href = confirmationURL;
+  });
+});
+
+
+  </script>
+
+</body>
+
+</html>

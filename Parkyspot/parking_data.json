@@ -1,0 +1,54 @@
+{
+    "morar": [
+      {
+        "name": "Gole ka Mandir",
+        "price": 20,
+        "distance": "1.5 km"
+      },
+      {
+        "name": "Thatipur",
+        "price": 15,
+        "distance": "2.0 km"
+      },
+      {
+        "name": "Chetakpuri",
+        "price": 25,
+        "distance": "1.8 km"
+      }
+    ],
+    "hazira": [
+      {
+        "name": "Padav",
+        "price": 10,
+        "distance": "1.2 km"
+      },
+      {
+        "name": "Phoolbagh",
+        "price": 12,
+        "distance": "1.6 km"
+      },
+      {
+        "name": "Interganj",
+        "price": 18,
+        "distance": "2.5 km"
+      }
+    ],
+    "lashkar": [
+      {
+        "name": "Jayendraganj",
+        "price": 22,
+        "distance": "2.1 km"
+      },
+      {
+        "name": "Kampo",
+        "price": 18,
+        "distance": "1.9 km"
+      },
+      {
+        "name": "Daulatganj",
+        "price": 20,
+        "distance": "2.3 km"
+      }
+    ]
+  }
+  
